@@ -31,6 +31,40 @@ can jump to the right profile no matter how many windows are open.
 `⌘ Tab` is taken over with an event tap (`src/tap.rs`); the `⌥` hotkeys are
 constants at the top of `src/ui.rs` (`init`) and `src/hotkey.rs` (key codes).
 
+## Install
+
+Requirements: an Apple Silicon Mac on macOS 14 Sonoma or later, Xcode
+Command Line Tools and Rust. There is no prebuilt download; the app is built
+from source on your Mac in about a minute.
+
+1. Install the Command Line Tools (skip if `git` already works):
+
+   ```sh
+   xcode-select --install
+   ```
+
+2. Install Rust with [rustup](https://rustup.rs):
+
+   ```sh
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   source "$HOME/.cargo/env"
+   ```
+
+3. Clone the repository and build:
+
+   ```sh
+   git clone https://github.com/nikolaevK/chrome-hub.git
+   cd chrome-hub
+   ./make_app.sh --run
+   ```
+
+4. Grant the two permissions the app asks for (see below), then press
+   `⌘ Tab`.
+
+To start it at login, add `dist/ChromeHub.app` under System Settings →
+General → Login Items. To update later, `git pull` and run
+`./make_app.sh --run` again; the permissions carry over.
+
 ## Build and run
 
 ```sh
@@ -58,8 +92,6 @@ On first launch macOS asks for two permissions. Both are required:
 
 Grant them in System Settings → Privacy & Security (relaunch after granting
 Screen Recording).
-To start it at login, add `dist/ChromeHub.app` under
-System Settings → General → Login Items.
 
 ## Privacy and security
 
